@@ -9,16 +9,18 @@ A React application that helps users learn French pronunciation through text-to-
 - **Text-to-Speech**: Pronounce French words and phrases using the Web Speech API
 - **Voice Selection**: Choose from available system voices (French voices prioritized)
 - **IPA Display**: Shows International Phonetic Alphabet notation for a limited set of entered French text (this database is limited)
-- **User-Friendly Interface**: Clean, responsive design with real-time feedback
+- **User-Friendly Interface**: Clean, responsive design
 - **Error Handling**: Comprehensive error messages for better user experience
 - **Accessibility**: Proper ARIA labels and keyboard support
 
 ## Tech Stack
 
-- **React**: Latest React version with hooks
-- **Web Speech API**: Browser-native text-to-speech synthesis [Click here for more information](https://developer.mozilla.org/en-US/docs/Web/API/Web_Speech_API)
-- **CSS3**: Modern styling with gradients and animations
-- **Responsive Design**: Mobile-friendly interface
+- **React**
+- **Webpack**
+- **npm**
+- **JS**
+- **CSS**
+- **Web Speech API**: which is a browser-native text-to-speech synthesis [Click here for more information](https://developer.mozilla.org/en-US/docs/Web/API/Web_Speech_API) 
 
 ## Project Structure
 
