@@ -25,6 +25,18 @@ A React application that helps users learn French pronunciation through text-to-
 ## Project Structure
 
 ```
+.gitignore
+LICENSE
+README.md
+package-lock.json
+package.json
+public/
+├── favicon.ico
+├── index.html                # Main template
+├── logo192.png
+├── logo512.png
+├── manifest.json
+├── robots.txt
 src/
 ├── components/
 │   ├── FrenchSpeaker.js      # Main component with UI
@@ -33,16 +45,20 @@ src/
 │   └── useSpeechSynthesis.js # Custom hook for speech synthesis
 ├── utils/
 │   └── ipaMapping.js         # IPA mapping for French words
-├── App.js                    # Root component
 ├── App.css                   # App styles
+├── App.js                    # Root component
+└── index.csss                # Entry point styles
 └── index.js                  # Entry point
+└── logo.svg
+└── reportWebVitals.js        # To do
+└── setupTests.js             # To do
 ```
 
 ## Installation & Setup
 
-1. **Download or clone the repo:**
+1. **Download or clone the repo**
 
-2. **Open a terminal in the project directory:**
+2. **Open a terminal in the project directory**
 
 3. **Install dependencies:**
    ```bash
@@ -59,10 +75,10 @@ src/
 ## Usage
 
 1. **Enter French Text**: Type French words or phrases in the textbox
-2. **Select Voice**: Choose a voice from the dropdown (French voices are recommended)
+2. **Select Voice**: Choose a voice from the dropdown 
 3. **Click Speak**: Press the "Speak" button to hear the pronunciation
-4. **View IPA**: The IPA display shows phonetic notation for the entered text (if it exists in its database)
-5. **Clear**: Use the Clear button to reset the text
+4. **View IPA**: The IPA display shows phonetic notation for the entered text (if it exists in this database)
+5. **Clear**: Use the Clear button to empty the textbox
 
 ### Supported Words
 
@@ -86,7 +102,7 @@ Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 ### `npm run build`
 Builds the app for production to the `build` folder.
 It bundles React in production mode and optimizes the build.
-Currently not working yet.
+Currently not working yet. (A to do for later.)
 
 ### `npm test`
 Launches the test runner in interactive watch mode. Currently there are no tests yet.
@@ -112,7 +128,7 @@ Modify CSS files in:
 
 ### Adding Features
 
-Some ideas for enhancement:
+Some ideas for future enhancement:
 - Integrate with a real IPA API (e.g., Wiktionary API)
 - Add word suggestions/autocomplete
 - Save favorite words
