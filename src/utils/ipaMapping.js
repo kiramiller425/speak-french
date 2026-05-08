@@ -6,30 +6,36 @@
 // Dictionary of common French words with their IPA equivalents
 const frenchToIPA = {
   // Common greetings
-  bonjour: 'bɔ̃ʒuʁ',
-  bonsoir: 'bɔ̃swaʁ',
-  salut: 'saly',
-  hello: 'ɛlo',
-  au: 'o',
-  revoir: 'ʁəvwaʁ',
-  'au revoir': 'o ʁəvwaʁ',
-
+  'bonjour': 'bɔ̃ʒuʁ',
+  'bonsoir': 'bɔ̃swaʁ',
+  'salut': 'saly',
+  'revoir': 'ʁəvwaʁ',
+  'comment': 'kɔmɑ̃',
+  
   // Common words
-  oui: 'wi',
-  non: 'nɔ̃',
-  merci: 'mɛʁsi',
-  'de rien': 'də ʁjɛ̃',
-  's\'il vous plaît': 'sil vu plɛ',
-  's\'il te plaît': 'sil tə plɛ',
-  excusez: 'ɛkskize',
-  pardon: 'paʁdɔ̃',
-  désolé: 'dezɔle',
+  'oui': 'wi',
+  'non': 'nɔ̃',
+  'merci': 'mɛʁsi',
+  'rien': 'ʁjɛ̃',
+  's\'il': 'sil',
+  'plaît': 'plɛ',
+  'excusez': 'ɛkskize',
+  'pardon': 'paʁdɔ̃',
+  'désolé': 'dezɔle',
+  'au': 'o',
+  'de': 'də',
+  'te': 'tə',
+  'tu': 'ty',
+  'vous': 'vu',
+  'ça': 'sa',
+  'vas': 'va',
+  'va': 'va',
   
   // Common phrases
-  'comment allez-vous': 'kɔmɑ̃ t ale vu',
-  'comment vas-tu': 'kɔmɑ̃ va ty',
-  'ça va': 'sa va',
-  'très bien': 'tʁɛ bjɛ̃',
+  'allez': 'ale',
+  'très': 'tʁɛ',
+  'bien': 'bjɛ̃',
+
   'je ne comprends pas': 'ʒə nə kɔ̃pʁɑ̃ pa',
   'parlez plus lentement': 'paʁle ply lɑ̃təmɑ̃',
   
@@ -80,7 +86,7 @@ const frenchToIPA = {
   savoir: 'savwaʁ',
 
   // Colors
-  rouge: 'ʁuʒ',
+  'rouge': 'ʁuʒ',
   bleu: 'blø',
   vert: 'vɛʁ',
   jaune: 'ʒon',
@@ -99,13 +105,12 @@ export const getFrenchIPA = (text) => {
     return '';
   }
 
-  const words = text
+  let words = text
     .toLowerCase()
     .trim()
-    .split(/\s+/);
+    .match(/[^\s-]+-?/g); // split on spaces and dashes
 
-  return words
-    .map((word) => {
+  return words.map((word) => {
       // Remove punctuation
       const cleanWord = word.replace(/[.,!?;:\-]/g, '');
       
@@ -114,17 +119,21 @@ export const getFrenchIPA = (text) => {
         return frenchToIPA[cleanWord];
       }
 
+        // Don't do partials here
       // Try to find partial matches (for multi-word phrases)
-      const multiWordMatch = Object.keys(frenchToIPA).find(
+/*      const multiWordMatch = Object.keys(frenchToIPA).find(
         (key) => key.includes(cleanWord) && cleanWord.length > 2
       );
-      
+     
       if (multiWordMatch) {
         return frenchToIPA[multiWordMatch];
       }
 
+*/
+// Don't fall back to word. Avoids confusion
       // Fallback to original if not found
-      return word;
+      //return word;
+return '';
     })
     .join(' ');
 };
