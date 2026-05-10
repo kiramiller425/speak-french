@@ -24,6 +24,9 @@ const frenchToIPA = {
   'désolé': 'dezɔle',
   'au': 'o',
   'de': 'də',
+  'je': 'ʒə',
+  'ne': 'nə', 
+  'pas': 'pa', 
   'te': 'tə',
   'tu': 'ty',
   'vous': 'vu',
@@ -35,65 +38,66 @@ const frenchToIPA = {
   'allez': 'ale',
   'très': 'tʁɛ',
   'bien': 'bjɛ̃',
-
-  'je ne comprends pas': 'ʒə nə kɔ̃pʁɑ̃ pa',
-  'parlez plus lentement': 'paʁle ply lɑ̃təmɑ̃',
+  'comprends': 'kɔ̃pʁɑ̃',
+  'parlez': 'paʁle',
+  'plus': 'ply',
+  'lentement': 'lɑ̃təmɑ̃',
   
   // Numbers
-  zéro: 'zeʁo',
-  un: 'œ̃',
-  deux: 'dø',
-  trois: 'tʁwa',
-  quatre: 'katʁ',
-  cinq: 'sɛ̃k',
-  six: 'sis',
-  sept: 'sɛt',
-  huit: 'ɥit',
-  neuf: 'nœf',
-  dix: 'dis',
+  'zéro': 'zeʁo',
+  'un': 'œ̃',
+  'deux': 'dø',
+  'trois': 'tʁwa',
+  'quatre': 'katʁ',
+  'cinq': 'sɛ̃k',
+  'six': 'sis',
+  'sept': 'sɛt',
+  'huit': 'ɥit',
+  'neuf': 'nœf',
+  'dix': 'dis',
 
   // Days of week
-  lundi: 'lɛ̃di',
-  mardi: 'maʁdi',
-  mercredi: 'mɛʁkʁədi',
-  jeudi: 'ʒødi',
-  vendredi: 'vɑ̃dʁədi',
-  samedi: 'samdi',
-  dimanche: 'dimɑ̃ʃ',
+  'lundi': 'lɛ̃di',
+  'mardi': 'maʁdi',
+  'mercredi': 'mɛʁkʁədi',
+  'jeudi': 'ʒødi',
+  'vendredi': 'vɑ̃dʁədi',
+  'samedi': 'samdi',
+  'dimanche': 'dimɑ̃ʃ',
 
   // Months
-  janvier: 'ʒɑ̃vje',
-  février: 'fevʁije',
-  mars: 'maʁs',
-  avril: 'avʁil',
-  mai: 'mɛ',
-  juin: 'ʒɥɛ̃',
-  juillet: 'ʒɥije',
-  août: 'ut',
-  septembre: 'sɛptɑ̃bʁ',
-  octobre: 'ɔktɔbʁ',
-  novembre: 'nɔvɑ̃bʁ',
-  décembre: 'desɑ̃bʁ',
+  'janvier': 'ʒɑ̃vje',
+  'février': 'fevʁije',
+  'mars': 'maʁs',
+  'avril': 'avʁil',
+  'mai': 'mɛ',
+  'juin': 'ʒɥɛ̃',
+  'juillet': 'ʒɥije',
+  'août': 'ut',
+  'septembre': 'sɛptɑ̃bʁ',
+  'octobre': 'ɔktɔbʁ',
+  'novembre': 'nɔvɑ̃bʁ',
+  'décembre': 'desɑ̃bʁ',
 
   // Common verbs
-  être: 'ɛtʁ',
-  avoir: 'avwaʁ',
-  aller: 'ale',
-  faire: 'fɛʁ',
-  pouvoir: 'puvwaʁ',
-  vouloir: 'vulwaʁ',
-  devoir: 'dəvwaʁ',
-  savoir: 'savwaʁ',
+  'être': 'ɛtʁ',
+  'avoir': 'avwaʁ',
+  'aller': 'ale',
+  'faire': 'fɛʁ',
+  'pouvoir': 'puvwaʁ',
+  'vouloir': 'vulwaʁ',
+  'devoir': 'dəvwaʁ',
+  'savoir': 'savwaʁ',
 
   // Colors
   'rouge': 'ʁuʒ',
-  bleu: 'blø',
-  vert: 'vɛʁ',
-  jaune: 'ʒon',
-  noir: 'nwaʁ',
-  blanc: 'blɑ̃',
-  rose: 'ʁoz',
-  orange: 'ɔʁɑ̃ʒ',
+  'bleu': 'blø',
+  'vert': 'vɛʁ',
+  'jaune': 'ʒon',
+  'noir': 'nwaʁ',
+  'blanc': 'blɑ̃',
+  'rose': 'ʁoz',
+  'orange': 'ɔʁɑ̃ʒ',
 };
 
 /**
@@ -111,31 +115,16 @@ export const getFrenchIPA = (text) => {
     .match(/[^\s-]+-?/g); // split on spaces and dashes
 
   return words.map((word) => {
-      // Remove punctuation
-      const cleanWord = word.replace(/[.,!?;:\-]/g, '');
+    // Remove punctuation
+    const cleanWord = word.replace(/[.,!?;:\-]/g, '');
       
-      // Check if exact match exists
-      if (frenchToIPA[cleanWord]) {
-        return frenchToIPA[cleanWord];
-      }
+    // Check if exact match exists
+    if (frenchToIPA[cleanWord]) {
+      return frenchToIPA[cleanWord];
+    }
 
-        // Don't do partials here
-      // Try to find partial matches (for multi-word phrases)
-/*      const multiWordMatch = Object.keys(frenchToIPA).find(
-        (key) => key.includes(cleanWord) && cleanWord.length > 2
-      );
-     
-      if (multiWordMatch) {
-        return frenchToIPA[multiWordMatch];
-      }
-
-*/
-// Don't fall back to word. Avoids confusion
-      // Fallback to original if not found
-      //return word;
-return '';
-    })
-    .join(' ');
+    return '';
+  }).join(' ');
 };
 
 /**
